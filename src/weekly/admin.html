@@ -1,96 +1,49 @@
-<!--
-  Requirement: Create the Admin View for the Weekly Breakdown
-
-  Instructions:
-  Fill in the HTML elements as described in the comments.
-  This page allows the teacher (admin) to perform full CRUD operations
-  on the weekly course content.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding -->
-    <meta charset="UTF-8">
-
-    <!-- Responsive viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title -->
-    <title>Manage Weekly Breakdown</title>
-
-    <!-- Link to stylesheet (you can change the file name if needed) -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Required JS -->
-    <script src="admin.js" defer></script>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Manage Weekly Breakdown</title>
+    
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+     <script src="admin.js" defer></script>
 </head>
-<body>
-
-    <!-- Header -->
-    <header>
-        <h1>Manage Weekly Breakdown</h1>
+<body class="container my-4">
+    <header class="mb-5">
+        <h1 class="text-center">Manage Weekly Breakdown</h1>
     </header>
 
-    <!-- Main content -->
     <main>
-
-        <!-- ============================================================
-             Section 1: Add / Edit Week Form
-             ============================================================ -->
-        <section>
+        <section class="mb-5">
             <h2>Add a New Week</h2>
 
             <form id="week-form" action="#">
-                <fieldset>
-                    <legend>Weekly Details</legend>
-
-                    <!-- Week Title -->
-                    <label for="week-title">Week Title:</label>
-                    <input 
-                        type="text" 
-                        id="week-title" 
-                        placeholder="Week 1: Introduction to HTML" 
-                        required
-                    >
-
-                    <!-- Start Date -->
-                    <label for="week-start-date">Start Date:</label>
-                    <input 
-                        type="date" 
-                        id="week-start-date" 
-                        required
-                    >
-
-                    <!-- Description -->
-                    <label for="week-description">Description:</label>
-                    <textarea 
-                        id="week-description" 
-                        rows="5"
-                    ></textarea>
-
-                    <!-- Resource Links -->
-                    <label for="week-links">Resource Links (one per line):</label>
-                    <textarea 
-                        id="week-links" 
-                        rows="3"
-                    ></textarea>
-
-                    <!-- Submit Button -->
-                    <button id="add-week" type="submit">
-                        Add Week
-                    </button>
-
+                <fieldset class="border p-3">
+                    <legend class="w-auto">Weekly Details</legend>
+                    <div class="mb-3">
+                        <label for="week-title" class="form-label">Week Title</label>
+                        <input type="text" id="week-title" class="form-control" placeholder="Week 1: Introduction to HTML" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="week-start-date" class="form-label">Start Date</label>
+                        <input type="date" id="week-start-date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="week-description" class="form-label">Week Description</label>
+                        <textarea id="week-description" class="form-control" rows="5" placeholder="Enter week description..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="week-links" class="form-label">Resource Links (one URL per line)</label>
+                        <textarea id="week-links" class="form-control" rows="3" placeholder="https://example.com/resource1"></textarea>
+                    </div>
+                    <button type="submit" id="add-week" class="btn btn-primary">Add Week</button>
                 </fieldset>
             </form>
         </section>
-
-        <!-- ============================================================
-             Section 2: Existing Weekly Entries
-             ============================================================ -->
+        
         <section>
             <h2>Current Weekly Breakdown</h2>
-
-            <table id="weeks-table">
+            <table id="weeks-table" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Week Title</th>
@@ -99,14 +52,11 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-
                 <tbody id="weeks-tbody">
-                    <!-- admin.js will inject rows here -->
+                    <!-- Rows injected by admin.js -->
                 </tbody>
             </table>
         </section>
-
     </main>
-
 </body>
 </html>
