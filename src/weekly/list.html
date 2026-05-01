@@ -1,51 +1,35 @@
-<!--
-  Requirement: Create the Student View for the Weekly Breakdown
-
-  Instructions:
-  This page is a read-only view for students to see the plan for all weeks.
-  Each week should link to its dedicated detail page.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- TODO: Add meta tags for charset (UTF-8) and viewport
-         (width=device-width, initial-scale=1.0). -->
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- TODO: Add a <title>, e.g., "Weekly Course Breakdown". -->
+    <!-- Title -->
+    <title>Weekly Course Breakdown</title>
 
-    <!-- TODO: Link to your CSS framework or stylesheet. -->
+    <!-- Bootstrap   -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <!-- Required: link list.js with defer so the DOM is ready before the
-         script runs. -->
+    <!-- JS -->
     <script src="list.js" defer></script>
 </head>
-<body>
 
-    <!-- TODO: Create a <header> containing an <h1> "Weekly Course Breakdown". -->
+<body class="container my-4">
 
-    <!-- TODO: Create the <main> content area. -->
+    <!-- Header -->
+    <header class="mb-5 text-center">
+        <h1>Weekly Course Breakdown</h1>
+    </header>
 
-        <!-- TODO: Create a <section id="week-list-section"> to contain the
-             list of week articles. The id is required by list.js. -->
+    <main>
 
-            <!-- list.js will inject one <article> per week here.
-                 Each article follows the structure below. -->
+        <!-- Week List Section -->
+        <section id="week-list-section" class="row g-4">
+            <!-- list.js will inject articles  -->
+        </section>
 
-            <!-- Example Week Article Structure (do NOT hardcode real data;
-                 list.js fetches it from the API):
-
-            <article>
-                <h2>Week 1: Introduction to HTML</h2>
-                <p>Starts on: 2025-01-13</p>
-                <p>Learn HTML fundamentals...</p>
-                <a href="details.html?id=1">View Details & Discussion</a>
-            </article>
-
-            Note: the href MUST be "details.html?id=<id>" so that
-            details.js can read the id from the URL query string. -->
-
-        <!-- End of #week-list-section -->
-    <!-- End of <main> -->
+    </main>
 
 </body>
 </html>
