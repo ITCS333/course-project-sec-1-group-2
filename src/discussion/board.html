@@ -8,12 +8,12 @@
 <html lang="en">
 <head>
     <!-- TODO: Add the <meta> tag for character encoding (UTF-8). -->
-
+     <meta charset="UTF-8">
     <!-- TODO: Add the responsive viewport <meta> tag
          (width=device-width, initial-scale=1.0). -->
-
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TODO: Add a <title>, e.g., "Discussion Board". -->
-
+     <title>Discussion Board</title>
     <!-- TODO: Link to your CSS framework or stylesheet. -->
 
     <!-- Required: link board.js with defer so the DOM is ready before the
@@ -24,35 +24,45 @@
 
     <!-- TODO: Create a <header> containing an <h1>
          "General Discussion Board". -->
-
+         <header><h1>General Discussion Board</h1></header>
     <!-- TODO: Create the <main> content area. -->
-
+      <main>
         <!-- ============================================================
              Section 1: Create a New Topic
              ============================================================ -->
         <!-- TODO: Create a <section> for the new-topic form. -->
+          <section>
 
             <!-- TODO: Add a sub-heading <h2> "Start a New Topic". -->
-
+               <h2>Start a New Topic</h2>
             <!-- TODO: Create a <form id="new-topic-form"> (action can be "#").
                  The id is required by board.js. -->
+               <form action="#" id="new-topic-form">
 
                 <!-- TODO: Use a <fieldset> to group the form controls. -->
+                <fieldset>
                     <!-- TODO: Add a <legend>, e.g., "New Topic Details". -->
-
+                         <legend>New Topic Details</legend>
                     <!-- TODO: Add a <label> and <input> for the topic subject.
                          - label for="topic-subject"
                          - input id="topic-subject", type="text", required -->
-
+                         <label for="topic-subject">topic-subject:</label>
+                         <input type="text" id="topic-subject" required>
+                         <br>
                     <!-- TODO: Add a <label> and <textarea> for the main message.
                          - label for="topic-message"
                          - textarea id="topic-message", rows="6", required -->
-
+                         <label for="topic-message">topic-details:</label> <br>
+                         <textarea id="topic-message" rows="6" required></textarea> <br>
                     <!-- TODO: Add a submit <button>.
                          - id="create-topic", type="submit"
                          - Text: "Create Topic" -->
+                         <button id="create-topic" type="submit">Create Topic</button>
+                </fieldset>
                 <!-- End of <fieldset> -->
+               </form>
             <!-- End of <form> -->
+          </section>
         <!-- End of form <section> -->
 
 
@@ -60,13 +70,14 @@
              Section 2: Existing Topics
              ============================================================ -->
         <!-- TODO: Create a <section> to display the list of current topics. -->
-
+          <section>
             <!-- TODO: Add a sub-heading <h2> "All Topics". -->
+               <h2>All Topics</h2>
 
             <!-- TODO: Create a <div id="topic-list-container"> to hold the
                  list of topic articles.
                  The id is required by board.js. -->
-
+               <div id="topic-list-container">
                 <!-- board.js will inject one <article> per topic here.
                      Each article follows the structure below. -->
 
@@ -88,10 +99,11 @@
                 topic.js can read the id from the URL query string.
                 The data-id attribute holds the integer id from the
                 topics table (primary key). -->
-
+               </div>
             <!-- End of #topic-list-container -->
+          </section>
         <!-- End of list <section> -->
-
+      </main>
     <!-- End of <main> -->
 </body>
 </html>
