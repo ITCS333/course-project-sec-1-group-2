@@ -1,150 +1,111 @@
-<!--
-  Requirement: Create a Responsive Admin Portal
-
-  Instructions:
-  Fill in the HTML elements as described in the comments.
-  Use the provided IDs for the elements that require them.
-  Focus on creating a clear and semantic HTML structure.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- TODO: Add the 'meta' tag for character encoding (UTF-8). -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
 
-    <!-- TODO: Add the responsive 'viewport' meta tag. -->
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- TODO: Add a 'title' for the page, e.g., "Admin Portal". -->
-
-    <!-- TODO: Link to a CSS file or a CSS framework. -->
-
-    <!-- TODO: Add a <script> tag that loads 'manage_users.js' with the 'defer' attribute.
-         Example: <script src="manage_users.js" defer></script> -->
-
+    <script src="manage_users.js" defer></script>
 </head>
-<body>
+<body class="container mt-4">
 
-    <!-- TODO: Create a 'header' element for the top of the page. -->
-        <!-- TODO: Inside the header, add a main heading (e.g., 'h1') with the text "Admin Portal". -->
-    <!-- End of the header. -->
+<header class="mb-4">
+    <h1>Admin Portal</h1>
+</header>
 
-    <!-- TODO: Create a 'main' element to hold the primary content of the portal. -->
+<main>
 
-        <!-- Section 1: Password Management -->
-        <!-- TODO: Create a 'section' for the password management functionality. -->
-            <!-- TODO: Add a sub-heading (e.g., 'h2') with the text "Change Your Password". -->
+    <!-- Section 1: Password Management -->
+    <section class="mb-5">
+        <h2>Change Your Password</h2>
 
-            <!-- TODO: Create a 'form' for changing the password.
-                 - action="#"
-                 - id="password-form" -->
-                <!-- TODO: Use a 'fieldset' to group the password-related fields. -->
-                    <!-- TODO: Add a 'legend' for the fieldset, e.g., "Password Update". -->
+        <form action="#" id="password-form">
+            <fieldset class="border p-3">
+                <legend>Password Update</legend>
 
-                    <!-- TODO: Add a 'label' for the current password input. 'for' should be "current-password". -->
-                    <!-- TODO: Add an 'input' for the current password.
-                         - type="password"
-                         - id="current-password"
-                         - required -->
+                <label for="current-password" class="form-label">Current Password</label>
+                <input type="password" id="current-password" class="form-control mb-3" required>
 
-                    <!-- TODO: Add a 'label' for the new password input. 'for' should be "new-password". -->
-                    <!-- TODO: Add an 'input' for the new password.
-                         - type="password"
-                         - id="new-password"
-                         - minlength="8"
-                         - required -->
+                <label for="new-password" class="form-label">New Password</label>
+                <input type="password" id="new-password" class="form-control mb-3" minlength="8" required>
 
-                    <!-- TODO: Add a 'label' for the confirm password input. 'for' should be "confirm-password". -->
-                    <!-- TODO: Add an 'input' to confirm the new password.
-                         - type="password"
-                         - id="confirm-password"
-                         - required -->
+                <label for="confirm-password" class="form-label">Confirm Password</label>
+                <input type="password" id="confirm-password" class="form-control mb-3" required>
 
-                    <!-- TODO: Add a 'button' to submit the form.
-                         - type="submit"
-                         - id="change"
-                         - Text: "Update Password" -->
-
-                <!-- End of the fieldset. -->
-            <!-- End of the password form. -->
-        <!-- End of the password management section. -->
+                <button type="submit" id="change" class="btn btn-primary">
+                    Update Password
+                </button>
+            </fieldset>
+        </form>
+    </section>
 
 
-        <!-- Section 2: User Management -->
-        <!-- TODO: Create another 'section' for the user management functionality. -->
-            <!-- TODO: Add a sub-heading (e.g., 'h2') with the text "Manage Users". -->
+    <!-- Section 2: User Management -->
+    <section>
+        <h2>Manage Users</h2>
 
-            <!-- Subsection 2.1: Add New User Form -->
-            <!-- TODO: Create a 'details' element so the "Add User" form can be collapsed. -->
-                <!-- TODO: Add a 'summary' element inside 'details' with the text "Add New User". -->
+        <!-- Add New User -->
+        <details class="mb-4">
+            <summary class="fw-bold">Add New User</summary>
 
-                <!-- TODO: Create a 'form' for adding a new user.
-                     - action="#"
-                     - id="add-user-form" -->
-                    <!-- TODO: Use a 'fieldset' to group the new user fields. -->
-                        <!-- TODO: Add a 'legend' for the fieldset, e.g., "New User Information". -->
+            <form action="#" id="add-user-form" class="mt-3">
+                <fieldset class="border p-3">
+                    <legend>New User Information</legend>
 
-                        <!-- TODO: Add a 'label' and 'input' for the user's full name.
-                             - label 'for': "user-name"
-                             - input 'id': "user-name"
-                             - input 'type': "text"
-                             - input: required -->
+                    <label for="user-name" class="form-label">Full Name</label>
+                    <input type="text" id="user-name" class="form-control mb-3" required>
 
-                        <!-- TODO: Add a 'label' and 'input' for the user's email.
-                             - label 'for': "user-email"
-                             - input 'id': "user-email"
-                             - input 'type': "email"
-                             - input: required -->
+                    <label for="user-email" class="form-label">Email</label>
+                    <input type="email" id="user-email" class="form-control mb-3" required>
 
-                        <!-- TODO: Add a 'label' and 'input' for the default password.
-                             - label 'for': "default-password"
-                             - input 'id': "default-password"
-                             - input 'type': "password"
-                             - input: required
-                             - minlength="8" -->
+                    <label for="default-password" class="form-label">Default Password</label>
+                    <input type="password" id="default-password" class="form-control mb-3" minlength="8" required>
 
-                        <!-- TODO: Add a 'label' and 'select' for the admin status.
-                             - label 'for': "is-admin"
-                             - select 'id': "is-admin"
-                             - Add two 'option' elements:
-                               - value="0" text "Student"
-                               - value="1" text "Admin" -->
+                    <label for="is-admin" class="form-label">Role</label>
+                    <select id="is-admin" class="form-select mb-3">
+                        <option value="0">Student</option>
+                        <option value="1">Admin</option>
+                    </select>
 
-                        <!-- TODO: Add a 'button' to submit the form.
-                             - type="submit"
-                             - id="add"
-                             - Text: "Add User" -->
-
-                    <!-- End of the fieldset. -->
-                <!-- End of the add user form. -->
-            <!-- End of the 'details' element. -->
+                    <button type="submit" id="add" class="btn btn-success">
+                        Add User
+                    </button>
+                </fieldset>
+            </form>
+        </details>
 
 
-            <!-- Subsection 2.2: User List -->
-            <!-- TODO: Add a sub-heading (e.g., 'h3') for the list of users, e.g., "Registered Users". -->
+        <!-- Registered Users Table -->
+        <h3>Registered Users</h3>
 
-            <!-- TODO: Add a search input field.
-                 - type="text"
-                 - id="search-input"
-                 - placeholder e.g. "Search by name or email..." -->
+        <input
+            type="text"
+            id="search-input"
+            class="form-control mb-3"
+            placeholder="Search by name or email..."
+        >
 
-            <!-- TODO: Create a 'table' to display the list of users.
-                 - id="user-table" -->
-                <!-- TODO: Create a 'thead' for the table headers. -->
-                    <!-- TODO: Create a 'tr' (table row) inside the 'thead'. -->
-                        <!-- TODO: Create 'th' (table header) cells for:
-                             "Name", "Email", "Admin", "Actions"
-                             Each 'th' should be clickable for sorting. -->
-                    <!-- End of the row. -->
-                <!-- End of 'thead'. -->
+        <table id="user-table" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-                <!-- TODO: Create a 'tbody' for the table body.
-                     - id="user-table-body"
-                     The rows will be populated dynamically by manage_users.js.
-                     Do NOT add any hardcoded rows here. -->
-            <!-- End of the table. -->
+            <tbody id="user-table-body">
+                <!-- Dynamic content from manage_users.js -->
+            </tbody>
+        </table>
 
-        <!-- End of the user management section. -->
+    </section>
 
-    <!-- End of the main content area. -->
+</main>
 
 </body>
 </html>
