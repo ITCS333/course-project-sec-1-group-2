@@ -46,6 +46,13 @@ let currentReplies = [];
 //   topicSubject, opMessage, opFooter,
 //   replyListContainer, replyForm, newReplyText.
 
+const topicSubject= document.querySelector('#topic-subject');
+const opMessage= document.querySelector('#op-message');
+const opFooter= document.querySelector('#op-footer');
+const replyListContainer= document.querySelector('#reply-list-container');
+const replyForm= document.querySelector('#reply-form');
+const newReplyText= document.querySelector('#new-reply');
+
 // --- Functions ---
 
 /**
@@ -59,6 +66,9 @@ let currentReplies = [];
  */
 function getTopicIdFromURL() {
   // ... your implementation here ...
+  const Parameters= new URLSearchParams(window.location.search);
+  return Parameters.get('id'); 
+   
 }
 
 /**
@@ -76,6 +86,9 @@ function getTopicIdFromURL() {
  */
 function renderOriginalPost(topic) {
   // ... your implementation here ...
+  topicSubject.textContent = topic.subject;
+  opMessage.textContent = topic.message;
+  opFooter.textContent = "Posted by: " +topic.author+" on " +topic.created_at;
 }
 
 /**
@@ -99,6 +112,29 @@ function renderOriginalPost(topic) {
  */
 function createReplyArticle(reply) {
   // ... your implementation here ...
+
+  const repArticle=document.createElement('article');
+  const repP=document.createElement('p');
+  const repFooter=document.createElement('footer');
+  const repDiv=document.createElement('div');
+  const repButton=document.createElement('button');
+
+  repP.textContent=reply.text;
+  
+  repFooter.textContent='Posted by: '+reply.author+' on '+reply.created_at;
+
+  repButton.classList.add('delete-reply-btn');
+  repButton.type='button';
+  repButton.dataset.id=reply.id;
+  repButton.textContent='Delete';
+
+  repDiv.appendChild(repButton);
+
+  repArticle.appendChild(repP);
+  repArticle.appendChild(repFooter);
+  repArticle.appendChild(repDiv);
+
+  return repArticle;
 }
 
 /**
@@ -112,6 +148,12 @@ function createReplyArticle(reply) {
  */
 function renderReplies() {
   // ... your implementation here ...
+  replyListContainer.innerHTML='';
+  currentReplies.forEach(reply =>
+  {
+    const newReply=createReplyArticle(reply);
+    replyListContainer.appendChild(newReply);
+  });
 }
 
 /**
@@ -136,6 +178,34 @@ function renderReplies() {
  */
 async function handleAddReply(event) {
   // ... your implementation here ...
+  event.preventDefault();
+
+  const replyText = newReplyText.value.trim();
+
+  if (!replyText) {
+    return;
+  }
+
+  const response = await fetch('./api/index.php?action=reply', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      topic_id: parseInt(currentTopicId, 10),
+      author: "Student",
+      text: replyText
+    })
+  });
+
+  const result = await response.json();
+
+  if (result.success === true) {
+    currentReplies.push(result.data);
+    renderReplies();
+    newReplyText.value = "";
+  }
+  
 }
 
 /**
@@ -151,6 +221,21 @@ async function handleAddReply(event) {
  */
 async function handleReplyListClick(event) {
   // ... your implementation here ...
+  if(event.target.classList.contains("delete-reply-btn")){
+
+    const intId=event.target.dataset.id;
+
+    const response = await fetch('./api/index.php?action=delete_reply&id='+intId,{
+    method:'DELETE'
+    });
+
+    const result = await response.json();
+
+    if(result.success === true){
+      currentReplies=currentReplies.filter(reply=> String(reply.id)!==String(intId));
+      renderReplies();
+    }
+  }
 }
 
 /**
@@ -181,6 +266,32 @@ async function handleReplyListClick(event) {
  */
 async function initializePage() {
   // ... your implementation here ...
+  currentTopicId = getTopicIdFromURL();
+  if(currentTopicId==null || currentTopicId.trim()==''){
+    topicSubject.textContent = "Topic not found.";
+    return;
+  }
+
+  const [tResponse,rResponse]= await Promise.all([
+    
+    fetch(`./api/index.php?id=${currentTopicId}`),
+    fetch(`./api/index.php?action=replies&topic_id=${currentTopicId}`)
+
+  ]);
+  const tResult =await tResponse.json();
+  const rResult=await rResponse.json();
+  if(rResult.success ===true){
+    currentReplies=rResult.data;
+  }
+
+  if(tResult.success ===true){
+    renderOriginalPost(tResult.data);
+    renderReplies();
+    replyForm.addEventListener('submit',handleAddReply);
+    replyListContainer.addEventListener('click',handleReplyListClick);
+  }else{
+    topicSubject.textContent = "Topic not found.";
+  }
 }
 
 // --- Initial Page Load ---
