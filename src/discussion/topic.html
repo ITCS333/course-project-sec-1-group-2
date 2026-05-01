@@ -10,9 +10,10 @@
 <head>
     <!-- TODO: Add <meta> tags for charset (UTF-8) and viewport
          (width=device-width, initial-scale=1.0). -->
-
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <!-- TODO: Add a <title>, e.g., "Topic Details". -->
-
+      <title>Topic Details</title>
     <!-- TODO: Link to your CSS framework or stylesheet. -->
 
     <!-- Required: link topic.js with defer. -->
@@ -24,29 +25,30 @@
          Inside it, add an <h1 id="topic-subject">.
          topic.js will set its textContent to the topic's subject.
          Leave it empty for now. -->
-
+         <header><h1 id="topic-subject"></h1></header>         
     <!-- TODO: Create the <main> content area. -->
-
+     <main>
         <!-- ============================================================
              Section 1: Original Post
              ============================================================ -->
         <!-- TODO: Use an <article id="original-post"> to display the
              main topic post. -->
-
+          <article id="original-post">
             <!-- TODO: Add a <p id="op-message">.
                  topic.js will set its textContent to the topic's message. -->
-
+                 <p id="op-message"></p>
             <!-- TODO: Add a <footer id="op-footer">.
                  topic.js will set its textContent to
                  "Posted by: {author} on {created_at}". -->
-
+                 <footer id="op-footer"></footer>
             <!-- TODO: Add a <div> for action buttons.
                  topic.js will inject an Edit button and a Delete button here.
                  The Delete button must have class="delete-btn"
                  and data-id="{id}" so topic.js can handle it.
                  NOTE: In a real app these buttons would only be visible
                  to the topic's author or the admin. -->
-
+                 <div></div>
+          </article>
         <!-- End of <article#original-post> -->
 
 
@@ -54,13 +56,13 @@
              Section 2: Replies
              ============================================================ -->
         <!-- TODO: Create a <section id="replies-section">. -->
-
+          <section id="replies-section">
             <!-- TODO: Add a sub-heading <h2> "Replies". -->
-
+               <h2>Replies</h2>
             <!-- TODO: Create a <div id="reply-list-container"> to hold the
                  list of reply articles.
                  The id is required by topic.js. -->
-
+               <div id="reply-list-container">
                 <!-- topic.js will inject one <article> per reply here.
                      Each article follows the structure below. -->
 
@@ -77,7 +79,7 @@
 
                 The data-id holds the integer id from the replies table
                 (primary key). -->
-
+               </div>
             <!-- End of #reply-list-container -->
 
             <!-- ============================================================
@@ -85,24 +87,30 @@
                  ============================================================ -->
             <!-- TODO: Create a <form id="reply-form"> (action="#").
                  The id is required by topic.js. -->
+               <form id="reply-form" action="#">
 
                 <!-- TODO: Use a <fieldset> to group the controls. -->
+               <fieldset>
                     <!-- TODO: Add a <legend>, e.g., "Your Reply". -->
-
+                         <legend>Your Reply</legend>
                     <!-- TODO: Add a <label> and <textarea> for the reply.
                          - label for="new-reply"
                          - textarea id="new-reply", required
                          - The id must be exactly "new-reply" as topic.js
                            reads this element by that id. -->
-
+                           <label for="new-reply">new-reply:</label>
+                           <textarea id="new-reply" required></textarea>
                     <!-- TODO: Add a submit <button>.
                          - type="submit"
                          - Text: "Post Reply" -->
+                         <button type="submit">Post Reply</button>
+               </fieldset>
                 <!-- End of <fieldset> -->
+               </form>
             <!-- End of <form> -->
-
+          </section>
         <!-- End of <section#replies-section> -->
-
+     </main>
     <!-- End of <main> -->
 </body>
 </html>
