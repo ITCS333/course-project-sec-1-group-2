@@ -513,15 +513,10 @@ try {
     ], 405);
 
 } catch (Throwable $e) {
-
     send_json([
-
         "success" => false,
-
-        "message" => "Server error"
-
+        "message" => $e->getMessage()
     ], 500);
-
 }
 
 ?>
