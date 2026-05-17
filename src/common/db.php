@@ -15,8 +15,9 @@ if (!function_exists('getDBConnection')) {
         if ($pdo === null) {
             $host = 'localhost';
             $db   = 'course';
-            $user = 'root';
-            $pass = '';
+            $user = 'admin';
+            $pass = 'password123';
+
             $dsn = "mysql:host={$host};dbname={$db};charset=utf8mb4";
 
             $pdo = new PDO($dsn, $user, $pass);
